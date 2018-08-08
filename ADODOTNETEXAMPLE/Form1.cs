@@ -58,9 +58,7 @@ namespace ADODOTNETEXAMPLE
                
             }
             sqlConnection.Close();
-            
             }
-
         //it will insert the data into the sqlserver
         private void ctlBtnRegister_Click(object sender, EventArgs e)
         {
