@@ -16,6 +16,8 @@ namespace ADODOTNETEXAMPLE
         public ctlLoginForm()
         {
             InitializeComponent();
+
+
         }
         SqlConnection sqlConnection;
         // it will clear the text in all the textboxes and pointing to id box(textbox1)
@@ -42,18 +44,18 @@ namespace ADODOTNETEXAMPLE
                 sqlDataAdapter.Fill(dataTable);
                 if (dataTable.Rows.Count == 1)
                 {
-                    MessageBox.Show("you successfuly logedin");
+                    MessageBox.Show("you successfuly logedin","LoginPage",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     clear();
                 }
                 else
                 {
-                    MessageBox.Show("enter the correct username and password");
+                    MessageBox.Show("enter the correct username and password","LoginPage",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     clear();
                 }
             }
             else
             {
-                MessageBox.Show("Enter the data");
+                MessageBox.Show("Enter the data", "LoginPage", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clear();    
                
             }
@@ -67,29 +69,27 @@ namespace ADODOTNETEXAMPLE
             sqlConnection.Open();
             if (ctlTxtUserName.Text != string.Empty && ctlTxtPassword.Text != string.Empty)
             {
-                string sqlQuery = "insert into USER_DETAILS(ID,USERNAME,PASSWORD)VALUES('" + ctlTxtID.Text.Trim() + "','" + ctlTxtUserName.Text.Trim() + "','" + ctlTxtPassword.Text.Trim() + "')";
+                string sqlQuery = "INSERT INTO USER_DETAILS(ID,USERNAME,PASSWORD)VALUES('" + ctlTxtID.Text.Trim() + "','" + ctlTxtUserName.Text.Trim() + "','" + ctlTxtPassword.Text.Trim() + "')";
                 SqlCommand command = new SqlCommand(sqlQuery, sqlConnection);
                 command.ExecuteNonQuery();
-                MessageBox.Show(" inserted data successfuly");
+                MessageBox.Show(" inserted data successfuly","RegistrationPage",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 DisplayData();
                 clear();
             }
             
             else
             {
-                MessageBox.Show(" Enter the data");
+                MessageBox.Show(" Enter the data","RegistrationPage",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 clear();
             }
             sqlConnection.Close();
         }
         public void DisplayData()
         {
-            //sqlConnection.Open();   StateBioDeta
             DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter("select * from StateBioDeta", sqlConnection);
+            SqlDataAdapter adapt = new SqlDataAdapter("select * from USER_DETAILS", sqlConnection);
             adapt.Fill(dt);
             dataGridView1.DataSource = dt;
-           // adapt.Close();
             sqlConnection.Close();
            
         }
@@ -109,13 +109,14 @@ namespace ADODOTNETEXAMPLE
                 ctlTxtUserName.Text = sqlDataReader["USERNAME"].ToString();
                 ctlTxtPassword.Text = sqlDataReader["PASSWORD"].ToString();
                 sqlDataReader.Close();
-                DisplayData();
+               // DisplayData();
+                MessageBox.Show("Sucessfully Searched ", "Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }
             else
             {
-                MessageBox.Show("Enter the valid data","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Enter the valid data","Search",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 clear();
             }
             
@@ -133,8 +134,7 @@ namespace ADODOTNETEXAMPLE
             sqlConnection.Open();
             command.ExecuteNonQuery();
             DisplayData();
-           // sqlConnection.Close();
-            MessageBox.Show("Record Updated Successfuly", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Record Updated Successfuly", "UpdatePage", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //it will delete the prticular record in the table
@@ -146,9 +146,8 @@ namespace ADODOTNETEXAMPLE
             SqlCommand command = new SqlCommand(search, sqlConnection);
             sqlConnection.Open();
             command.ExecuteNonQuery();
-            DisplayData();
-            //sqlConnection.Close();
-            MessageBox.Show("Deleted Record successfuly", "Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            DisplayData();            
+            MessageBox.Show("Deleted Record successfuly", "UpdatePage",MessageBoxButtons.OK,MessageBoxIcon.Error);
             clear();
         }
 
@@ -171,6 +170,11 @@ namespace ADODOTNETEXAMPLE
             DisplayData();  //calling dataDisplay Method
          
         }
+
+        private void ctlLoginForm_Load(object sender, EventArgs e)
+        {
+            
+    }
     }
     }
 

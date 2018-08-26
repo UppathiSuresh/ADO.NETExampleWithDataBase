@@ -66,7 +66,7 @@
             // ctlBtnLogin
             // 
             this.ctlBtnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctlBtnLogin.Location = new System.Drawing.Point(28, 195);
+            this.ctlBtnLogin.Location = new System.Drawing.Point(21, 195);
             this.ctlBtnLogin.Name = "ctlBtnLogin";
             this.ctlBtnLogin.Size = new System.Drawing.Size(112, 35);
             this.ctlBtnLogin.TabIndex = 2;
@@ -164,7 +164,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(420, 24);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(587, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(570, 249);
             this.dataGridView1.TabIndex = 11;
             // 
             // ctlBtnDisplayData
@@ -183,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(911, 312);
+            this.ClientSize = new System.Drawing.Size(1002, 291);
             this.Controls.Add(this.ctlBtnDisplayData);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ctlBtnDelete);
@@ -200,6 +200,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ctlLoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.ctlLoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
